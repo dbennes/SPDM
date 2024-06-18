@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de Atualização de Div com Ajax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <input type="text" id="search" placeholder="Digite algo aqui">
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function(){
+            $('#search').on('input', function(){
+                var searchValue = $(this).val();
+                $.ajax({
+                    url: 'teste2.php', // Arquivo PHP para processar a pesquisa e retornar os resultados
+                    method: 'POST',
+                    data: {search: searchValue},
+                    success: function(response){
+                        $('#result').html(response);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
